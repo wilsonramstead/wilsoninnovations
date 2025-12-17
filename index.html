@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="Wilson Innovations LLC - software products for fitness studios." />
+    <title>Wilson Innovations LLC</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+
+  <body>
+    <header class="site-header">
+      <div class="container header-row">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">WI</div>
+          <div class="brand-text">
+            <div class="brand-name">Wilson Innovations LLC</div>
+            <div class="brand-sub">Software products for fitness studios</div>
+          </div>
+        </div>
+
+        <nav class="nav">
+          <a href="#products">Products</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <h1>Built to help gyms retain members and run smoother.</h1>
+            <p class="lead">
+              Wilson Innovations LLC builds modern software for fitness studios — scheduling,
+              community engagement, and accountability tools that help members stay consistent.
+            </p>
+
+            <div class="cta-row">
+              <a class="btn primary" href="#products">View Products</a>
+              <a class="btn" href="#contact">Contact</a>
+            </div>
+
+            <div class="meta">
+              <div><span class="meta-label">Company:</span> Wilson Innovations LLC</div>
+              <div><span class="meta-label">Based in:</span> St. Petersburg, Florida</div>
+              <div><span class="meta-label">Support:</span> <a href="mailto:wilson@wilsoninnovations.net">wilson@wilsoninnovations.net</a></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-title">CoreX</div>
+            <div class="card-body">
+              <p>
+                A white-labeled member app for gyms and studios. Built for scheduling, a private
+                community feed, goal tracking, leaderboards, announcements, and messaging.
+              </p>
+              <div class="card-links">
+                <a href="https://wilsonramstead.github.io/corex-web/" target="_blank" rel="noopener">Product Page</a>
+                <a href="https://wilsonramstead.github.io/corex-web/" target="_blank" rel="noopener">Privacy Policy</a>
+              </div>
+              <div class="fineprint">
+                App Store preview:
+                <a href="https://apps.apple.com/us/app/core-x/id6755406927" target="_blank" rel="noopener">View on the App Store</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="products" class="section">
+        <div class="container">
+          <h2>Products</h2>
+
+          <div class="grid">
+            <article class="product">
+              <h3>CoreX</h3>
+              <p>
+                Fully branded gym app experience with scheduling + engagement features that help
+                increase retention.
+              </p>
+              <ul>
+                <li>Class & training schedule + RSVPs</li>
+                <li>Private social feed (gym community)</li>
+                <li>Goal tracking & calendar accountability</li>
+                <li>Leaderboards & announcements</li>
+                <li>In-app messaging</li>
+              </ul>
+
+              <div class="product-actions">
+                <a class="btn small" href="https://wilsonramstead.github.io/corex-web/" target="_blank" rel="noopener">Learn More</a>
+                <a class="btn small" href="https://apps.apple.com/us/app/core-x/id6755406927" target="_blank" rel="noopener">App Store</a>
+              </div>
+            </article>
+
+            <article class="product">
+              <h3>Custom Studio Solutions</h3>
+              <p>
+                Wilson Innovations LLC can also build custom website integrations and studio tools
+                as needed.
+              </p>
+              <ul>
+                <li>Studio websites & landing pages</li>
+                <li>Member onboarding flows</li>
+                <li>Admin tools & reporting</li>
+                <li>Feature additions and enhancements</li>
+              </ul>
+
+              <div class="product-actions">
+                <a class="btn small" href="#contact">Contact</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section alt">
+        <div class="container">
+          <h2>Contact</h2>
+
+          <div class="contact-grid">
+            <div>
+              <p class="lead">
+                For partnership inquiries, product questions, or support, reach out below.
+              </p>
+
+              <div class="contact-cards">
+                <div class="contact-card">
+                  <div class="label">Email</div>
+                  <div class="value">
+                    <a href="mailto:wilson@wilsoninnovations.net">wilson@wilsoninnovations.net</a>
+                  </div>
+                </div>
+
+                <div class="contact-card">
+                  <div class="label">Phone</div>
+                  <div class="value">206-484-7761</div>
+                </div>
+
+                <div class="contact-card">
+                  <div class="label">Business Address</div>
+                  <div class="value">
+                    225 1st Ave N<br />
+                    St Petersburg, FL 33701
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="note">
+              <h3>Support</h3>
+              <p>
+                If you are a studio using CoreX and need help, email support and include your studio
+                name and a quick description of the issue.
+              </p>
+              <div class="divider"></div>
+              <p class="fineprint">
+                © <span id="year"></span> Wilson Innovations LLC. All rights reserved.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-row">
+        <div>Wilson Innovations LLC</div>
+        <div class="footer-links">
+          <a href="https://wilsonramstead.github.io/corex-web/" target="_blank" rel="noopener">Privacy</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>

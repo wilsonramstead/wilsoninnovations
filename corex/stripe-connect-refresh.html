@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Setup Incomplete • CoreX</title>
+  <meta name="description" content="Stripe Connect setup needs to be completed." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css?v=4" />
+  <style>
+    .refresh-container {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      text-align: center;
+    }
+    .refresh-icon {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 24px;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.6; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.05); }
+    }
+    .refresh-title {
+      font-family: 'Audiowide', cursive;
+      font-size: 32px;
+      color: var(--secondary);
+      margin: 0 0 16px;
+      text-shadow: 1px 2px 4px rgba(255,255,255,.4);
+    }
+    .refresh-message {
+      font-size: 18px;
+      color: var(--light);
+      margin: 0 0 24px;
+      max-width: 500px;
+    }
+    .close-instruction {
+      font-size: 16px;
+      color: var(--muted);
+      padding: 16px 24px;
+      background: var(--glass);
+      border-radius: 12px;
+      border: 1px solid var(--glassBorder);
+      max-width: 400px;
+    }
+  </style>
+</head>
+<body>
+  <div class="refresh-container">
+    <!-- Refresh/retry icon -->
+    <svg class="refresh-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="50" cy="50" r="45" fill="none" stroke="var(--secondary)" stroke-width="6" opacity="0.3"/>
+      <path d="M50 20 A30 30 0 1 1 30 60" fill="none" stroke="var(--white)" stroke-width="6" stroke-linecap="round"/>
+      <path d="M50 15 L50 25 L40 20 Z" fill="var(--white)"/>
+    </svg>
+
+    <h1 class="refresh-title">Setup Incomplete</h1>
+    <p class="refresh-message">
+      Your Stripe Connect setup wasn't completed. Please close this window, return to the CoreX app, and try again.
+    </p>
+    <div class="close-instruction">
+      Close this window and return to the app to retry.
+    </div>
+  </div>
+</body>
+</html>

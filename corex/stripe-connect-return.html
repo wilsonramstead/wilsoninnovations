@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Stripe Setup Complete • CoreX</title>
+  <meta name="description" content="Your Stripe Connect setup is complete." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css?v=4" />
+  <style>
+    .success-container {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      text-align: center;
+    }
+    .success-icon {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 24px;
+      animation: scaleIn 0.3s ease;
+    }
+    @keyframes scaleIn {
+      from { transform: scale(0); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .success-title {
+      font-family: 'Audiowide', cursive;
+      font-size: 32px;
+      color: var(--primary);
+      margin: 0 0 16px;
+      text-shadow: 1px 2px 4px rgba(255,255,255,.6);
+    }
+    .success-message {
+      font-size: 18px;
+      color: var(--light);
+      margin: 0 0 24px;
+      max-width: 500px;
+    }
+    .close-instruction {
+      font-size: 16px;
+      color: var(--muted);
+      padding: 16px 24px;
+      background: var(--glass);
+      border-radius: 12px;
+      border: 1px solid var(--glassBorder);
+      max-width: 400px;
+    }
+  </style>
+</head>
+<body>
+  <div class="success-container">
+    <!-- Success checkmark icon -->
+    <svg class="success-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="50" cy="50" r="45" fill="none" stroke="var(--primary)" stroke-width="6" opacity="0.3"/>
+      <circle cx="50" cy="50" r="35" fill="none" stroke="var(--primary)" stroke-width="4" opacity="0.5"/>
+      <path d="M30 50 L45 65 L70 35" fill="none" stroke="var(--white)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+
+    <h1 class="success-title">Setup Complete!</h1>
+    <p class="success-message">
+      Your Stripe Connect account has been successfully configured. You're all set to receive payments from your members.
+    </p>
+    <div class="close-instruction">
+      You can close this window and return to the CoreX app to continue.
+    </div>
+  </div>
+</body>
+</html>

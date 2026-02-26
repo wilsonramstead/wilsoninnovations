@@ -11,8 +11,8 @@
   --fadedPurple:rgba(153,153,255,0.3);
 
   --bg:#0b0c10;
-  --glass:rgba(255,255,255,0.15);
-  --glassBorder:rgba(255,255,255,0.10);
+  --glass:rgba(255,255,255,0.18);
+  --glassBorder:rgba(255,255,255,0.28);
   --muted:rgba(255,255,255,0.7);
 
   --wrapW:960px;
@@ -22,10 +22,7 @@
 html,body{height:100%}
 body{
   margin:0;
-  background:
-    radial-gradient(1000px 420px at 20% -10%, rgba(135,245,255,0.15), transparent 60%),
-    radial-gradient(820px 420px at 100% 0%, rgba(147,197,253,0.12), transparent 60%),
-    var(--bg);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) fixed;
   color:var(--white);
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
@@ -37,8 +34,9 @@ body{
 /* Header */
 .site-header{
   position:sticky; top:0; z-index:10;
-  background:rgba(0,0,0,0.4);
-  backdrop-filter:blur(8px);
+  background:rgba(255,255,255,0.12);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
   border-bottom:1px solid var(--glassBorder);
 }
 .site-header .wrap{
@@ -94,11 +92,13 @@ body{
 .card{
   border-radius:18px;
   background:var(--glass);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
   border:1px solid var(--glassBorder);
   overflow:hidden;
   padding:16px;
   margin:18px 0;
-  box-shadow:0 10px 30px rgba(0,0,0,.35);
+  box-shadow:0 8px 32px rgba(60,0,120,.25);
   text-align:center; /* Center all text in cards */
 }
 .cardTitle{
@@ -118,7 +118,7 @@ h3{font-size:16px; margin:16px 0 8px}
 p{line-height:1.65; color:#e7e7e7; margin:8px 0}
 ul{padding-left:18px}
 li{line-height:1.65; color:#d8d8d8; margin:6px 0}
-a{ color:var(--primary); text-decoration:none }
+a{ color:var(--white); text-decoration:none }
 a:hover{ text-decoration:underline }
 
 .actions{ display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin:12px 0 4px }

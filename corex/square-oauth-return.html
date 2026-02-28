@@ -76,9 +76,11 @@
       <span class="symbol" id="symbol">✓</span>
     </div>
     <h1 id="title">Square Connected!</h1>
-    <p id="message">Your Square account has been successfully linked. You can close this page and return to the app.</p>
-    <a href="corex://welcome" class="btn" id="return-btn">Return to App</a>
-    <p class="hint">If the button doesn't work, simply close this tab and reopen the app.</p>
+    <p id="message">Your Square account has been successfully linked. Tap the button below or close this page to return to the app.</p>
+    <!-- corex:// opens the app without navigating to a specific screen.
+         App.js will detect paymentSetupComplete=true and open automatically. -->
+    <a href="corex://" class="btn" id="return-btn">Return to App</a>
+    <p class="hint">Or tap Done / Close at the top of this screen.</p>
   </div>
 
   <script>
@@ -93,6 +95,7 @@
         document.getElementById('symbol').style.color = '#f5576c';
         document.getElementById('title').textContent = 'Connection Failed';
         document.getElementById('message').textContent = errorMsg + ' Please return to the app and try again.';
+        document.getElementById('return-btn').style.display = 'none';
       } else {
         document.getElementById('symbol').style.color = '#667eea';
       }

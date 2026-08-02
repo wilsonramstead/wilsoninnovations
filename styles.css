@@ -468,23 +468,44 @@ a.browser-link:hover .browser { box-shadow: var(--shadow-lg); }
 .shot:hover .browser { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
 .gallery-hint { font-size: .85rem; color: var(--muted); margin-top: 4px; display: inline-flex; align-items: center; gap: 7px; }
 
-/* templates coming-soon */
-.soon {
+/* templates gallery */
+.tpl-intro {
   margin-top: 26px;
-  border: 1.5px dashed var(--line);
-  border-radius: var(--radius);
-  padding: clamp(26px, 5vw, 46px);
-  background: repeating-linear-gradient(135deg, transparent, transparent 12px, rgba(23,19,14,.014) 12px, rgba(23,19,14,.014) 24px);
   text-align: center;
+  scroll-margin-top: 90px;
 }
-.soon .tag {
+.tpl-intro .tag {
   display: inline-block;
   font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
   color: var(--accent-ink); background: var(--accent-wash);
   border-radius: 100px; padding: .4em .9em; margin-bottom: 14px;
 }
-.soon h4 { font-family: var(--serif); font-size: 1.5rem; font-weight: 400; }
-.soon p { color: var(--muted); margin-top: 8px; max-width: 48ch; margin-inline: auto; }
+.tpl-intro h4 { font-family: var(--serif); font-size: 1.5rem; font-weight: 400; }
+.tpl-intro p { color: var(--muted); margin-top: 8px; max-width: 62ch; margin-inline: auto; }
+.tpl-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 16px;
+  margin-top: 28px;
+}
+.tpl-card {
+  display: flex; flex-direction: column; gap: 8px; min-width: 0;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 22px 20px;
+  text-decoration: none; color: inherit;
+  transition: box-shadow .25s ease, transform .25s ease, border-color .25s ease;
+}
+a.tpl-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); border-color: var(--accent); }
+.tpl-trade { font-family: var(--serif); font-size: 1.22rem; color: var(--ink); letter-spacing: -.01em; }
+.tpl-desc { color: var(--muted); font-size: .92rem; margin: 0; }
+.tpl-link { margin-top: auto; padding-top: 6px; font-size: .88rem; font-weight: 600; color: var(--accent-ink); }
+.tpl-card--soon {
+  border-style: dashed; border-width: 1.5px;
+  background: repeating-linear-gradient(135deg, transparent, transparent 12px, rgba(23,19,14,.014) 12px, rgba(23,19,14,.014) 24px);
+}
+.tpl-card--soon a { color: var(--accent-ink); font-weight: 600; }
 
 /* =========================================================================
    Why cards

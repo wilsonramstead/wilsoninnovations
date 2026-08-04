@@ -53,8 +53,28 @@
           io.unobserve(entry.target);
         }
       });
-    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+    }, { rootMargin: "0px 0px 12% 0px", threshold: 0 });
     reveals.forEach(function (el) { io.observe(el); });
+
+    /* safety net: mobile momentum scrolling can outrun the observer —
+       anything already above the fold gets revealed on the next scroll tick */
+    var sweepTimer = null;
+    var sweep = function () {
+      sweepTimer = null;
+      var vh = window.innerHeight;
+      reveals = reveals.filter(function (el) {
+        if (el.classList.contains("is-visible")) return false;
+        if (el.getBoundingClientRect().top < vh) {
+          el.classList.add("is-visible");
+          io.unobserve(el);
+          return false;
+        }
+        return true;
+      });
+    };
+    window.addEventListener("scroll", function () {
+      if (!sweepTimer) sweepTimer = setTimeout(sweep, 90);
+    }, { passive: true });
   }
 
   /* ---------- dashboard lightbox ---------- */

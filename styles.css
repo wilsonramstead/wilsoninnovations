@@ -468,6 +468,37 @@ a.browser-link:hover .browser { box-shadow: var(--shadow-lg); }
 .shot:hover .browser { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
 .gallery-hint { font-size: .85rem; color: var(--muted); margin-top: 4px; display: inline-flex; align-items: center; gap: 7px; }
 
+/* selected work — project cards */
+.proj-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: clamp(30px, 4.5vw, 46px);
+}
+@media (max-width: 760px){ .proj-grid { grid-template-columns: 1fr; } }
+.proj-card {
+  display: flex; flex-direction: column; min-width: 0;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  text-decoration: none; color: inherit;
+  transition: box-shadow .25s ease, transform .25s ease, border-color .25s ease;
+}
+a.proj-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); border-color: var(--accent); }
+.proj-thumb {
+  display: block; width: 100%; height: auto;
+  aspect-ratio: 1280 / 900; object-fit: cover; object-position: top;
+  border-bottom: 1px solid var(--line);
+  background: var(--accent-wash);
+}
+a.proj-card:hover .proj-thumb { filter: saturate(1.06); }
+.proj-body { display: flex; flex-direction: column; gap: 8px; flex: 1; padding: 22px 24px 24px; }
+.proj-kicker { font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-ink); }
+.proj-name { font-family: var(--serif); font-size: 1.5rem; color: var(--ink); letter-spacing: -.01em; }
+.proj-desc { color: var(--muted); font-size: .96rem; margin: 0; }
+.proj-link { margin-top: auto; padding-top: 8px; font-size: .9rem; font-weight: 600; color: var(--accent-ink); }
+
 /* templates gallery */
 .tpl-intro {
   margin-top: 26px;

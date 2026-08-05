@@ -31,7 +31,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./styles.css" />
 
     <script type="application/ld+json">
@@ -67,6 +67,10 @@
   </head>
 
   <body>
+    <!-- living background: aurora blobs + film grain (decorative) -->
+    <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="grain" aria-hidden="true"></div>
+
     <a class="skip" href="#work">Skip to work</a>
 
     <!-- ===================== Header ===================== -->
@@ -114,6 +118,13 @@
         </div>
       </section>
 
+      <!-- decorative ticker -->
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee__track">
+          <span>Websites <b class="tick">·</b> Software <b class="tick">·</b> St. Petersburg <b class="tick">·</b> Built by hand <b class="tick">·</b> Core.X <b class="tick">·</b> Fast <b class="tick">·</b> Mobile-first <b class="tick">·</b> You own it <b class="tick">·</b>&nbsp;</span>
+          <span>Websites <b class="tick">·</b> Software <b class="tick">·</b> St. Petersburg <b class="tick">·</b> Built by hand <b class="tick">·</b> Core.X <b class="tick">·</b> Fast <b class="tick">·</b> Mobile-first <b class="tick">·</b> You own it <b class="tick">·</b>&nbsp;</span>
+        </div>
+      </div>
 
       <!-- ===================== Portfolio ===================== -->
       <section class="section alt" id="work">

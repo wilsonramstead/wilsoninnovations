@@ -77,6 +77,66 @@
     }, { passive: true });
   }
 
+  /* ---------- before/after comparison slider ---------- */
+  var ba = document.getElementById("ba");
+  if (ba) {
+    var baRange = ba.querySelector(".ba__range");
+    var clipOk = window.CSS && CSS.supports && CSS.supports("clip-path", "inset(0 50% 0 0)");
+    if (baRange && clipOk) {
+      ba.classList.add("is-ready");
+      var setBaPos = function () {
+        ba.style.setProperty("--pos", baRange.value + "%");
+      };
+      baRange.addEventListener("input", setBaPos);
+      setBaPos();
+
+      /* intro state: stage starts dimmed with a "slide me" prompt; the handle
+         auto-teases once so the mechanic is obvious. Ends ~2s after the section
+         scrolls into view, or on the first interaction — and never returns. */
+      var introDone = false;
+      var teaseRaf = 0;
+      var endIntro = function () {
+        if (introDone) return;
+        introDone = true;
+        if (teaseRaf) cancelAnimationFrame(teaseRaf);
+        ba.classList.add("is-intro-done");
+        setBaPos();
+      };
+      var tease = function () {
+        var start = null;
+        var dur = 1100;
+        var step = function (ts) {
+          if (introDone) return;
+          if (start === null) start = ts;
+          var t = Math.min((ts - start) / dur, 1);
+          /* 50 → 44 → 50, eased by the sine itself */
+          ba.style.setProperty("--pos", (50 - 6 * Math.sin(Math.PI * t)) + "%");
+          if (t < 1) teaseRaf = requestAnimationFrame(step);
+        };
+        teaseRaf = requestAnimationFrame(step);
+      };
+      var startIntro = function () {
+        if (introDone) return;
+        if (!reduceMotion) tease();
+        setTimeout(endIntro, 2200);
+      };
+      ["pointerdown", "touchstart", "focus", "input"].forEach(function (evt) {
+        baRange.addEventListener(evt, endIntro, { passive: true });
+      });
+      if ("IntersectionObserver" in window) {
+        var baIo = new IntersectionObserver(function (entries) {
+          if (entries.some(function (e) { return e.isIntersecting; })) {
+            baIo.disconnect();
+            startIntro();
+          }
+        }, { threshold: 0.3 });
+        baIo.observe(ba);
+      } else {
+        startIntro();
+      }
+    }
+  }
+
   /* ---------- dashboard lightbox ---------- */
   var shots = Array.prototype.slice.call(document.querySelectorAll(".shot"));
   var lb = document.getElementById("lightbox");

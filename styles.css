@@ -547,6 +547,178 @@ a.tpl-card:hover .tpl-thumb { filter: saturate(1.06); }
 .tpl-card--soon a { color: var(--accent-ink); font-weight: 600; }
 
 /* =========================================================================
+   Before / After proof slider
+   ========================================================================= */
+.ba { margin-top: clamp(32px, 5vw, 52px); }
+
+/* no-JS fallback: the two shots side by side */
+.ba__stage {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.ba__pane {
+  position: relative;
+  margin: 0;
+  min-width: 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-md);
+  background: var(--white);
+}
+.ba__pane--before { order: -1; }
+.ba__pane img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1280 / 900;
+  object-fit: cover;
+  object-position: top;
+}
+.ba__label {
+  position: absolute;
+  top: 12px;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  gap: .55em;
+  font-size: clamp(.74rem, 1.9vw, .92rem);
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  line-height: 1;
+  padding: .42em .95em .42em .42em;
+  border-radius: 100px;
+  pointer-events: none;
+  box-shadow: 0 3px 12px rgba(23, 19, 14, .3);
+}
+.ba__label-tag {
+  display: inline-block;
+  font-size: .84em;
+  letter-spacing: .13em;
+  padding: .45em .75em;
+  border-radius: 100px;
+}
+.ba__label--before { left: 12px; background: rgba(23, 19, 14, .92); color: var(--paper); }
+.ba__label--before .ba__label-tag { background: var(--paper); color: var(--ink); }
+.ba__label--after { right: 12px; background: var(--accent); color: var(--white); }
+.ba__label--after .ba__label-tag { background: var(--white); color: var(--accent-ink); }
+.ba__divider, .ba__range, .ba__intro { display: none; }
+@media (max-width: 640px) {
+  .ba__stage { grid-template-columns: 1fr; }
+  .ba.is-ready .ba__label--after { top: auto; bottom: 12px; }
+  /* keep the BEFORE chip fully inside the left half at the 50% resting position */
+  .ba.is-ready .ba__label { font-size: .66rem; letter-spacing: .04em; gap: .45em; }
+}
+
+/* enhanced: stacked drag-to-compare (script.js adds .is-ready when supported) */
+.ba.is-ready { --pos: 50%; }
+.ba.is-ready .ba__stage {
+  display: block;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-lg);
+  background: var(--white);
+}
+.ba.is-ready .ba__pane {
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+.ba.is-ready .ba__pane--before {
+  position: absolute;
+  inset: 0;
+  clip-path: inset(0 calc(100% - var(--pos)) 0 0);
+}
+.ba.is-ready .ba__pane--before img { height: 100%; }
+.ba.is-ready .ba__divider {
+  display: block;
+  position: absolute;
+  top: 0; bottom: 0;
+  left: var(--pos);
+  width: 2px;
+  margin-left: -1px;
+  background: var(--white);
+  box-shadow: 0 0 0 1px rgba(23, 19, 14, .2);
+  pointer-events: none;
+}
+.ba__knob {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--paper);
+  border: 2px solid var(--white);
+  box-shadow: var(--shadow-md);
+  display: grid;
+  place-items: center;
+}
+.ba.is-ready .ba__range {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  cursor: ew-resize;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  touch-action: none;
+}
+.ba.is-ready .ba__range::-webkit-slider-thumb { -webkit-appearance: none; width: 44px; height: 44px; }
+.ba.is-ready .ba__range::-moz-range-thumb { width: 44px; height: 44px; border: none; background: transparent; }
+.ba.is-ready .ba__stage:has(.ba__range:focus-visible) {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* intro state: dimmed stage + pulsing prompt chip until first view (+~2s)
+   or first interaction — script.js adds .is-intro-done to end it for good */
+.ba.is-ready .ba__intro {
+  display: flex;
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  text-align: center;
+  background: rgba(23, 19, 14, .38);
+  transition: opacity .5s ease, visibility .5s ease;
+  pointer-events: none;
+}
+.ba.is-intro-done .ba__intro { opacity: 0; visibility: hidden; }
+.ba__hint {
+  display: inline-flex;
+  align-items: center;
+  gap: .5em;
+  background: var(--accent);
+  color: var(--white);
+  font-weight: 700;
+  font-size: clamp(.9rem, 2.4vw, 1.05rem);
+  line-height: 1.25;
+  padding: .85em 1.5em;
+  border-radius: 100px;
+  box-shadow: 0 12px 34px rgba(36, 56, 255, .45), 0 2px 8px rgba(23, 19, 14, .25);
+  animation: ba-pulse 1.5s ease-in-out infinite;
+}
+@keyframes ba-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ba__hint { animation: none; }
+}
+
+/* =========================================================================
    Why cards
    ========================================================================= */
 .why-grid {
